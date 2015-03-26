@@ -2,18 +2,13 @@
 #
 # Full description of class chocolatey_server here.
 #
-# === Parameters
 #
-# [*sample_parameter*]
-#   Explanation of what this parameter affects and what it defaults to.
-#
-class chocolatey_server (
-  $port = $::chocolatey_server::params::service_port,
-) inherits ::chocolatey_server::params {
 
-  $chocolatey_server_location = 'C:\tools\chocolatey.server'
-  $chocolatey_server_app_pool_name = 'chocolatey.server'
-  $chocolatey_server_app_port = $port
+class chocolatey_server (
+  $chocolatey_server_location      = 'C:\tools\chocolatey.server',
+  $chocolatey_server_app_pool_name = 'chocolatey.server',
+  $chocolatey_server_app_port      = $::chocolatey_server::params::service_port,
+) inherits ::chocolatey_server::params {
 
   # package install
   package {'chocolatey.server':
